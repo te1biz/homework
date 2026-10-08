@@ -1,30 +1,25 @@
-from src.masks import get_mask_account, get_mask_card_number
+from datetime import datetime
+
+from src import masks
 
 
-def mask_account_card(info: str) -> str:
-    """Принимает строку с типом и номером карты/счета и возвращает её с замаскированным номером."""
-    parts = info.split()
-    num_index = -1
+def mask_account_card(user_account: str) -> str:
+    """Функция, которая маскирует карту или счёт пользователя и создаёт виджет"""
+    parts = user_account.split()
+    if len(parts) < 2:
+        raise ValueError("Нужно указать тип карты или счёта и номер")
 
-    for i, part in enumerate(parts):
-        if part.isdigit():
-            num_index = i
-            break
+    account_type = " ".join(parts[:-1])
+    account_number = parts[-1]
 
-    if num_index == -1:
-        return info
-
-    name = " ".join(parts[:num_index])
-    number = parts[num_index]
-
-    if name.lower().startswith("счет"):
-        return f"{name} {get_mask_account(number)}"
+    if account_type == "Счет":
+        masked_card = masks.get_mask_account(account_number)
     else:
-        return f"{name} {get_mask_card_number(number)}"
+        masked_card = masks.get_mask_card_number(account_number)
+
+    return f"{account_type} {masked_card}"
 
 
-def get_date(date_str: str) -> str:
-    """Трансформирует строку с датой в формат ДД.ММ.ГГГГ"""
-    date_part = date_str.split("T")[0]
-    year, month, day = date_part.split("-")
-    return f"{day}.{month}.{year}"
+def get_date(date: str) -> str:
+    """Функция, которая обрабатывает формат даты"""
+    return datetime.fromisoformat(date).strftime("%d.%m.%Y")
