@@ -7,6 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+requests = "^2.34.2"
+python-dotenv = "^1.2.4"
 
 [build-system]
 requires = ["poetry-core"]
@@ -19,6 +21,9 @@ lint =[
     "black (>=26.5.1,<27.0.0)",
     "isort (>=9.0.1,<10.0.0)",
     "pytest (>=9.1.1,<10.0.0)"]
+dev = [
+    "pytest-cov (>=7.1.0,<8.0.0)"
+]
 
 [tool.black]
 line-length = 119
