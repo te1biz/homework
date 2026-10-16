@@ -7,7 +7,7 @@ def process_bank_search(
     data: list[dict[str, Any]],
     search: str,
 ) -> list[dict[str, Any]]:
-    """Находит транзакции, описание которых соответствует поисковому запросу."""
+    """Ищет операции по тексту в поле description."""
     pattern = re.compile(re.escape(search), re.IGNORECASE)
 
     return [
