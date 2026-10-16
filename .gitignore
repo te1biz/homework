@@ -8,10 +8,5 @@ __pycache__/
 
 .vscode/
 
-.venv/
-venv/
-env/
-.env
-
 .DS_Store
 Thumbs.db
