@@ -1,6 +1,5 @@
 import pytest
 
-
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -13,11 +12,11 @@ from src.masks import get_mask_account, get_mask_card_number
         ("1234567890123456789", "1234 56** **** 6789"),
     ],
 )
-def test_get_mask_number(card_number, expected):
+def test_get_mask_number(card_number: str, expected: str) -> None:
     assert get_mask_card_number(card_number) == expected
 
 
-def test_get_mask_card_number_rejects_empty_string():
+def test_get_mask_card_number_rejects_empty_string() -> None:
     with pytest.raises(ValueError):
         get_mask_card_number("")
 
@@ -29,11 +28,13 @@ def test_get_mask_card_number_rejects_empty_string():
         ("1234", "**1234"),
     ],
 )
-def test_get_mask_account(account_number, expected):
+def test_get_mask_account(account_number: str, expected: str) -> None:
     assert get_mask_account(account_number) == expected
 
 
-@pytest.mark.parametrize("account_number", ["", " ", "    ", "\t\n", "1", "12", "123"])
-def test_get_mask_account_rejects_short_number(account_number):
+@pytest.mark.parametrize(
+    "account_number", ["", " ", "    ", "\t\n", "1", "12", "123"]
+)
+def test_get_mask_account_rejects_short_number(account_number: str) -> None:
     with pytest.raises(ValueError):
         get_mask_account(account_number)
