@@ -1,48 +1,48 @@
-2026-10-16 20:13:07,047 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,047 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,048 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,048 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,049 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,049 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,049 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,049 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,050 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,050 - src.masks - ERROR - Card number must not be empty
-2026-10-16 20:13:07,051 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,051 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,052 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,052 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,052 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,052 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,053 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,053 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,054 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,054 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,055 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,055 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,055 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,056 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,056 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,056 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,057 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,057 - src.masks - ERROR - Account number must contain at least 4 characters
-2026-10-16 20:13:07,057 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,057 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,058 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,058 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,059 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,059 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,059 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,059 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,060 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,060 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,076 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,076 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,077 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,077 - src.masks - INFO - Card number masked successfully
-2026-10-16 20:13:07,078 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,078 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,078 - src.masks - INFO - Masking account number
-2026-10-16 20:13:07,078 - src.masks - INFO - Account number masked successfully
-2026-10-16 20:13:07,079 - src.masks - INFO - Masking card number
-2026-10-16 20:13:07,079 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,440 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,440 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,441 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,441 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,442 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,442 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,442 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,443 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,443 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,443 - src.masks - ERROR - Card number must not be empty
+2026-10-16 20:19:32,447 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,447 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,447 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,448 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,448 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,448 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,449 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,449 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,450 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,450 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,451 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,451 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,452 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,452 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,452 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,452 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,453 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,453 - src.masks - ERROR - Account number must contain at least 4 characters
+2026-10-16 20:19:32,454 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,454 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,454 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,454 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,455 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,455 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,456 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,456 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,456 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,456 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,474 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,474 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,474 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,474 - src.masks - INFO - Card number masked successfully
+2026-10-16 20:19:32,475 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,475 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,476 - src.masks - INFO - Masking account number
+2026-10-16 20:19:32,476 - src.masks - INFO - Account number masked successfully
+2026-10-16 20:19:32,476 - src.masks - INFO - Masking card number
+2026-10-16 20:19:32,476 - src.masks - INFO - Card number masked successfully
