@@ -1,70 +1,65 @@
-# Проект homework
+# Обработка банковских операций (Homework)
 
-## Описание:
+Учебный проект на Python для обработки, фильтрации и анализа массивов банковских транзакций. Реализованы инструменты для сортировки данных, выборки по статусам и валютам, а также генераторы для оптимизированной работы с большими объемами операций.
 
-это моя домашка 
+## Функционал проекта
 
-## Установка:
+### Обработка и сортировка данных
+* **filter_by_state** — фильтрует список словарей с транзакциями по значению ключа state (по умолчанию 'EXECUTED').
+* **sort_by_date** — сортирует список транзакций по дате (по умолчанию — по убыванию, от самых новых к старым).
+
+### Генераторы (src.generators)
+Модуль для эффективной потоковой обработки транзакций:
+* **filter_by_currency** — поочередно выдает транзакции, где валюта операции соответствует заданному коду (например, "RUB" или "USD").
+* **transaction_descriptions** — генератор, который принимает список транзакций и поочередно возвращает описание (description) каждой операции.
+* **card_number_generator** — генерирует номера банковских карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне (от 0000 0000 0000 0001 до 9999 9999 9999 9999).
+
+---
+
+## Установка
 
 1. Клонируйте репозиторий:
-```
-git clone https://github.com/te1biz/homework.git
-```
-2. Установите зависимости:
-```
+git clone [https://github.com/te1biz/homework.git](https://github.com/te1biz/homework.git)
+cd homework
+2. Установите зависимости с помощью Poetry:
 poetry install
-```
-## Использование:
+---
 
-1. filter by state -
-Фильтрует список словарей по значению ключа
-2. sort by date - 
-сортирует список по дате
+## Примеры использования
 
-### Включения и генераторы:
-1. добавил функции filter_by_currency, transaction_descriptions, card_number_generator для работы с массивами транзакций
-2. Так же добаавил тесты для них
+Импортируйте необходимые функции из пакета src:
 
-## Генераторы и включение:
-модуль src.generators получил генераторы для отбора транзакций по коду валют и выдачи номеров карт в диапазоне.
+### 1. Фильтрация по валюте (filter_by_currency)
+from src.generators import filter_by_currency
 
-
-## Тесты 
-1. запустить все тесты для проверки можно командой 
-```bash
-pytest
-```
-2. чтоб запустить тесты и создать html отчет используйте
-```bash
-pytest --cov=src --cov-report=term-missing --cov-report=html
-```
-
-# Пример использования функций
-### импортируйте нужные функции из src
-
-### filter by curency:
-```bash
 print("--- Фильтрация по валюте (RUB) ---")
-
 rub_transactions = filter_by_currency(sample_transactions, "RUB")
+
 for tx in rub_transactions:
     print(f"ID: {tx['id']}, Описание: {tx['description']}")
-```
+### 2. Получение описаний транзакций (transaction_descriptions)
+from src.generators import transaction_descriptions
 
-### transaction_descriptions
-```bash
 descriptions_gen = transaction_descriptions(sample_transactions)
 all_descriptions = list(descriptions_gen)
 
 print(all_descriptions)
-```
+### 3. Генерация номеров карт (card_number_generator)
+from src.generators import card_number_generator
 
-### card_number_generator
-```bash
 cards = card_number_generator(1, 3)
 
-print(next(cards))
-print(next(cards))
-print(next(cards))
-```
+print(next(cards))  # 0000 0000 0000 0001
+print(next(cards))  # 0000 0000 0000 0002
+print(next(cards))  # 0000 0000 0000 0003
+---
 
+## Тестирование
+
+Проект покрыт модульными тестами с использованием библиотеки pytest.
+
+Для запуска всех тестов выполните команду:
+pytest
+Для запуска тестов с оценкой покрытия кода (Coverage) и генерацией HTML-отчета используйте:
+pytest --cov=src --cov-report=term-missing --cov-report=html
+*(После выполнения команды отчет о покрытии будет доступен в папке htmlcov/index.html)*.
