@@ -1,0 +1,16 @@
+2026-10-16 18:40:15,483 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_transactions0/operations.json
+2026-10-16 18:40:15,484 - src.utils - INFO - Loaded 2 transactions
+2026-10-16 18:40:15,484 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_empty_file0/empty.json
+2026-10-16 18:40:15,485 - src.utils - ERROR - Failed to load transactions: Expecting value: line 1 column 1 (char 0)
+2026-10-16 18:40:15,485 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_missing_file0/missing.json
+2026-10-16 18:40:15,485 - src.utils - ERROR - Failed to load transactions: [Errno 2] No such file or directory: '/tmp/pytest-of-telbiz/pytest-8/test_load_missing_file0/missing.json'
+2026-10-16 18:40:15,486 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_not_a_list___id___1_0/invalid_structure.json
+2026-10-16 18:40:15,486 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 18:40:15,487 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_not_a_list__text__0/invalid_structure.json
+2026-10-16 18:40:15,487 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 18:40:15,488 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_not_a_list_123_0/invalid_structure.json
+2026-10-16 18:40:15,488 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 18:40:15,489 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_not_a_list_null_0/invalid_structure.json
+2026-10-16 18:40:15,489 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 18:40:15,490 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-8/test_load_invalid_json0/broken.json
+2026-10-16 18:40:15,490 - src.utils - ERROR - Failed to load transactions: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
