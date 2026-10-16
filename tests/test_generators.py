@@ -3,12 +3,7 @@ from typing import Any
 
 import pytest
 
-from src.generators import (
-    card_number_generator,
-    filter_by_currency,
-    transaction_descriptions,
-)
-
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(
@@ -26,7 +21,6 @@ def test_filter_by_currency(
     ]
 
     assert actual_ids == expected_ids
-
 
 
 def test_filter_by_currency_not_match(

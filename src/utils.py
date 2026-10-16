@@ -1,9 +1,7 @@
 import json
+import logging
 from pathlib import Path
 from typing import Any
-import logging
-
-
 
 LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
@@ -43,5 +41,3 @@ def load_transactions(file_path: str | Path) -> list[dict[str, Any]]:
     transactions = [item for item in data if isinstance(item, dict)]
     logger.info("Loaded %d transactions", len(transactions))
     return transactions
-
-
