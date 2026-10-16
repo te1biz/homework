@@ -12,7 +12,7 @@ API_URL = "https://api.apilayer.com/exchangerates_data/convert"
 
 
 def convert_to_rub(transaction: dict[str, Any]) -> float:
-    """Возвращает сумму транзакции в рублях."""
+    """vозвращает сумму транзакции в рублях."""
     operation_amount = transaction.get("operationAmount", {})
     amount = float(operation_amount.get("amount", 0))
     currency = operation_amount.get("currency", {}).get("code", "RUB")
