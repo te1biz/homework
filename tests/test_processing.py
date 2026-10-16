@@ -1,63 +1,56 @@
 import pytest
 
-from src.processing import filter_by_state, sort_by_date
+from src.widget import get_date, mask_account_card
 
 
 @pytest.mark.parametrize(
-    ("state", "expected_ids"),
+    ("value", "expected"),
     [
-        ("EXECUTED", [41428829, 939719570]),
-        ("CANCELED", [594226727, 615064591]),
-        ("UNKNOWN", []),
+        (
+            "Visa Platinum 1234567812345678",
+            "Visa Platinum 1234 56** **** 5678",
+        ),
+        (
+            "MasterCard 9876543210987654",
+            "MasterCard 9876 54** **** 7654",
+        ),
+        (
+            "Счет 40817810099910004321",
+            "Счет **4321",
+        ),
+        (
+            "Счет 1234",
+            "Счет **1234",
+        ),
+        (
+            "  Visa   Platinum  1234567812345678  ",
+            "Visa Platinum 1234 56** **** 5678",
+        ),
     ],
 )
-def test_filter_by_state(operations, state, expected_ids):
-    result = filter_by_state(operations, state)
-    assert [item["id"] for item in result] == expected_ids
+def test_mask_account_card(value: str, expected: str) -> None:
+    assert mask_account_card(value) == expected
 
 
-def test_filter_by_state_default(operations):
-    result = filter_by_state(operations)
-    assert [item["id"] for item in result] == [41428829, 939719570]
-
-
-def test_sort_by_date_newest_first(operations):
-    result = sort_by_date(operations)
-    assert [item["id"] for item in result] == [
-        41428829,
-        615064591,
-        594226727,
-        939719570,
-    ]
-
-
-def test_sort_by_date_oldest_first(operations):
-    result = sort_by_date(operations, is_reversed=False)
-    assert [item["id"] for item in result] == [
-        939719570,
-        594226727,
-        615064591,
-        41428829,
-    ]
-
-
-def test_sort_by_date_keeps_order_for_equal_dates(same_date_operations):
-    result = sort_by_date(same_date_operations)
-    assert [item["id"] for item in result] == ["first", "second"]
-
-
-def test_sort_by_date_accepts_date_without_time():
-    items = [
-        {"id": "date_only", "date": "2024-03-11"},
-        {"id": "timestamp", "date": "2024-03-11T12:00:00"},
-    ]
-
-    result = sort_by_date(items)
-    assert [item["id"] for item in result] == ["timestamp", "date_only"]
-
-
-@pytest.mark.parametrize("date", ["", "не дата", "2024-13-40"])
-def test_sort_by_date_rejects_invalid_date(date):
+@pytest.mark.parametrize("value", ["", "   ", "Visa", "Счет"])
+def test_mask_account_card_rejects_missing_number(value: str) -> None:
     with pytest.raises(ValueError):
-        sort_by_date([{"date": date}])
+        mask_account_card(value)
 
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("2024-03-11T02:26:18.671407", "11.03.2024"),
+        ("2024-03-11", "11.03.2024"),
+        ("2000-01-01", "01.01.2000"),
+    ],
+)
+def test_get_date(value: str, expected: str) -> None:
+    assert get_date(value) == expected
+
+
+@pytest.mark.parametrize("value", ["", "   ", "не дата", "2024-13-40"])
+def test_get_date_rejects_invalid_input(value: str) -> None:
+    with pytest.raises(ValueError):
+        get_date(value)
