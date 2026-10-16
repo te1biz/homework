@@ -30,6 +30,7 @@ poetry install
 Импортируйте необходимые функции из пакета src:
 
 ### 1. Фильтрация по валюте (filter_by_currency)
+```bash
 from src.generators import filter_by_currency
 
 print("--- Фильтрация по валюте (RUB) ---")
@@ -37,14 +38,18 @@ rub_transactions = filter_by_currency(sample_transactions, "RUB")
 
 for tx in rub_transactions:
     print(f"ID: {tx['id']}, Описание: {tx['description']}")
+```
 ### 2. Получение описаний транзакций (transaction_descriptions)
+```bash
 from src.generators import transaction_descriptions
 
 descriptions_gen = transaction_descriptions(sample_transactions)
 all_descriptions = list(descriptions_gen)
 
 print(all_descriptions)
+```
 ### 3. Генерация номеров карт (card_number_generator)
+```bash
 from src.generators import card_number_generator
 
 cards = card_number_generator(1, 3)
@@ -52,7 +57,8 @@ cards = card_number_generator(1, 3)
 print(next(cards))  # 0000 0000 0000 0001
 print(next(cards))  # 0000 0000 0000 0002
 print(next(cards))  # 0000 0000 0000 0003
----
+```
+
 
 ## Тестирование
 
