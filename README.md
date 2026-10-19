@@ -24,7 +24,7 @@
 
 Импортируйте необходимые функции из пакета src:
 1. Фильтрация по валюте (filter_by_currency)
-
+```bash
 from src.generators import filter_by_currency
 
 print("--- Фильтрация по валюте (RUB) ---")
@@ -41,9 +41,9 @@ descriptions_gen = transaction_descriptions(sample_transactions)
 all_descriptions = list(descriptions_gen)
 
 print(all_descriptions)
-
+```
 3. Генерация номеров карт (card_number_generator)
-
+```bash
 from src.generators import card_number_generator
 
 cards = card_number_generator(1, 3)
@@ -51,37 +51,20 @@ cards = card_number_generator(1, 3)
 print(next(cards))  # 0000 0000 0000 0001
 print(next(cards))  # 0000 0000 0000 0002
 print(next(cards))  # 0000 0000 0000 0003
-
+```
 Тестирование
 
 Проект покрыт модульными тестами с использованием библиотеки pytest.
 
-Для запуска всех тестов выполните команду: pytest Для запуска тестов с оценкой покрытия кода (Coverage) и генерацией HTML-отчета используйте: pytest --cov=src --cov-report=term-missing --cov-report=html (После выполнения команды отчет о покрытии будет доступен в папке htmlcov/index.html).
-About
-No description, website, or topics provided.
-Resources
-Readme
-Activity
-Stars
-1 star
-Watchers
-1 watching
-Forks
-1 fork
-Releases
-1tag
-Create a new release
-Packages
-No packages published
-Publish your first package
-Contributors
-2 (2)
+Для запуска всех тестов выполните команду:
+```bash
+pytest
+```
+Для запуска тестов с оценкой покрытия кода (Coverage) и генерацией HTML-отчета используйте:
+```bash
+pytest --cov=src --cov-report=term-missing --cov-report=html
+```
+(После выполнения команды отчет о покрытии будет доступен в папке htmlcov/index.html).
 
-    @te1biz
-    te1biztelbiz
-    @antigravity-gemini-lab
-    antigravity-gemini-labGoogle Antigravity
 
-Languages
-
-    Python100%
+  
