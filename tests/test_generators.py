@@ -10,7 +10,6 @@ from src.generators import (
 )
 
 
-
 def test_filter_by_currency(
     transactions: list[dict[str, Any]],
 ) -> None:
@@ -26,7 +25,6 @@ def test_filter_by_currency(
     ]
 
     assert actual_ids == expected_ids
-
 
 
 def test_filter_by_currency_not_match(
