@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.13"
 requests = "^2.34.2"
 python-dotenv = "^1.2.4"
+openpyxl = "^3.1.5"
 
 [build-system]
 requires = ["poetry-core"]
@@ -23,7 +24,8 @@ lint =[
     "pytest (>=9.1.1,<10.0.0)"]
 dev = [
     "pytest-cov (>=7.1.0,<8.0.0)",
-    "types-requests (>=2.33.0.20261006,<3.0.0.0)"
+    "types-requests (>=2.33.0.20261006,<3.0.0.0)",
+    "types-openpyxl (>=3.1.5.20260827,<4.0.0.0)"
 ]
 
 [tool.black]
