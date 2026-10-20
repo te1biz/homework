@@ -1,16 +1,16 @@
-2026-10-16 20:19:32,465 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_transactions0/operations.json
-2026-10-16 20:19:32,465 - src.utils - INFO - Loaded 2 transactions
-2026-10-16 20:19:32,466 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_empty_file0/empty.json
-2026-10-16 20:19:32,466 - src.utils - ERROR - Failed to load transactions: Expecting value: line 1 column 1 (char 0)
-2026-10-16 20:19:32,467 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_missing_file0/missing.json
-2026-10-16 20:19:32,467 - src.utils - ERROR - Failed to load transactions: [Errno 2] No such file or directory: '/tmp/pytest-of-telbiz/pytest-23/test_load_missing_file0/missing.json'
-2026-10-16 20:19:32,468 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list___id___1_0/invalid_structure.json
-2026-10-16 20:19:32,468 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 20:19:32,469 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list__text__0/invalid_structure.json
-2026-10-16 20:19:32,469 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 20:19:32,470 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list_123_0/invalid_structure.json
-2026-10-16 20:19:32,470 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 20:19:32,471 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list_null_0/invalid_structure.json
-2026-10-16 20:19:32,472 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 20:19:32,473 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_invalid_json0/broken.json
-2026-10-16 20:19:32,473 - src.utils - ERROR - Failed to load transactions: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2026-10-20 12:44:40,205 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_transactions0/operations.json
+2026-10-20 12:44:40,205 - src.utils - INFO - Loaded 2 transactions
+2026-10-20 12:44:40,206 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_empty_file0/empty.json
+2026-10-20 12:44:40,206 - src.utils - ERROR - Failed to load transactions: Expecting value: line 1 column 1 (char 0)
+2026-10-20 12:44:40,207 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_missing_file0/missing.json
+2026-10-20 12:44:40,207 - src.utils - ERROR - Failed to load transactions: [Errno 2] No such file or directory: '/tmp/pytest-of-telbiz/pytest-0/test_load_missing_file0/missing.json'
+2026-10-20 12:44:40,208 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_not_a_list___id___1_0/invalid_structure.json
+2026-10-20 12:44:40,208 - src.utils - WARNING - JSON file does not contain a list
+2026-10-20 12:44:40,209 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_not_a_list__text__0/invalid_structure.json
+2026-10-20 12:44:40,209 - src.utils - WARNING - JSON file does not contain a list
+2026-10-20 12:44:40,209 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_not_a_list_123_0/invalid_structure.json
+2026-10-20 12:44:40,209 - src.utils - WARNING - JSON file does not contain a list
+2026-10-20 12:44:40,211 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_not_a_list_null_0/invalid_structure.json
+2026-10-20 12:44:40,211 - src.utils - WARNING - JSON file does not contain a list
+2026-10-20 12:44:40,213 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-0/test_load_invalid_json0/broken.json
+2026-10-20 12:44:40,213 - src.utils - ERROR - Failed to load transactions: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
