@@ -1,71 +1,172 @@
 # Обработка банковских операций (Homework)
 
-Учебный проект на Python для обработки, фильтрации и анализа массивов банковских транзакций. Реализованы инструменты для сортировки данных, выборки по статусам и валютам, а также генераторы для оптимизированной работы с большими объемами операций.
+ Учебный проект на Python для загрузки, фильтрации и анализа банковских транзакций. Программа поддерживает JSON, CSV и XLSX, а также реализует главную страницу, сервис «Инвесткопилка» и отчёт по тратам в выбранной категории.
 
-## Функционал проекта
+## _Функционал проекта_
 
-### Обработка и сортировка данных
-* **filter_by_state** — фильтрует список словарей с транзакциями по значению ключа state (по умолчанию 'EXECUTED').
-* **sort_by_date** — сортирует список транзакций по дате (по умолчанию — по убыванию, от самых новых к старым).
+### _Обработка и сортировка данных_
 
-### Генераторы (src.generators)
-Модуль для эффективной потоковой обработки транзакций:
-* **filter_by_currency** — поочередно выдает транзакции, где валюта операции соответствует заданному коду (например, "RUB" или "USD").
-* **transaction_descriptions** — генератор, который принимает список транзакций и поочередно возвращает описание (description) каждой операции.
-* **card_number_generator** — генерирует номера банковских карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне (от 0000 0000 0000 0001 до 9999 9999 9999 9999).
+* **`src.main`** — консольное приложение для работы с банковскими операциями.
+* **`filter_by_state`** — фильтрует транзакции по статусу.
+* **`sort_by_date`** — сортирует транзакции по дате.
+* Поддерживается фильтрация рублёвых операций, поиск по описанию и маскировка номеров карт и счетов.
+
+### _Главная страница (`src.views`)_
+
+Функция **`main_page()`** принимает дату и время в формате `YYYY-MM-DD HH:MM:SS` и список транзакций. Она формирует JSON с приветствием, расходами и кешбэком по картам, топ‑5 транзакций, курсами валют и ценами акций.
+
+Настройки находятся в `user_settings.json` в корне проекта:
+
+```json
+{
+  "user_currencies": ["USD", "EUR"],
+  "user_stocks": ["AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"]
+}
+```
+
+Курсы валют загружаются через Exchange Rates Data API. Для этого укажите ключ в `.env`:
+
+```env
+EXCHANGE_RATES_API_KEY=ваш_ключ
+```
+
+Цены акций загружаются через Yahoo Finance Chart API. Если API недоступен, в JSON сохраняются валюта или тикер, значение `0.0` и описание ошибки в поле `error`.
+
+Пример:
+
+```python
+import json
+
+from src.utils import load_transactions
+from src.views import main_page
+
+transactions = load_transactions("data/operations.json")
+response = main_page("2024-03-31 12:00:00", transactions)
+
+print(json.dumps(json.loads(response), ensure_ascii=False, indent=2))
+```
+
+### _Сервис «Инвесткопилка» (`src.services`)_
+
+**`investment_bank(month, transactions, limit)`** рассчитывает сумму, которую можно было накопить за счёт округления трат за указанный месяц. Допустимые шаги округления: 10, 50 и 100 рублей.
+
+```python
+from src.services import investment_bank
+
+transactions = [
+    {"Дата операции": "2024-03-01", "Сумма операции": 1712},
+    {"Дата операции": "2024-03-15", "Сумма операции": 1750},
+]
+
+saved_amount = investment_bank("2024-03", transactions, 50)
+print(saved_amount)  # 38.0
+```
+
+### _Отчёт по тратам в категории (`src.reports`)_
+
+**`spending_by_category(dataframe, category, date_to=None)`** возвращает операции выбранной категории за три календарных месяца до даты включительно. Если дата не указана, используется текущая дата.
+
+Результат автоматически сохраняется в `reports.json` в текущей рабочей папке. Декоратор **`report_saver`** позволяет указать другой путь к файлу.
+
+```python
+import pandas as pd
+
+from src.reports import spending_by_category
+
+transactions = pd.read_excel("data/transactions.xlsx")
+report = spending_by_category(
+    transactions,
+    category="Продукты",
+    date_to="2024-03-31",
+)
+
+print(report)
+```
 
 ---
 
-## Установка
+## _Установка_
 
-1. Клонируйте репозиторий:
-git clone [https://github.com/te1biz/homework.git](https://github.com/te1biz/homework.git)
-cd homework
-2. Установите зависимости с помощью Poetry:
+Для работы проекта нужны Python 3.13 или новее и Poetry.
+
+```bash
 poetry install
+```
+
+Отчёты используют библиотеку `pandas`. Если она ещё не указана в зависимостях проекта, добавьте её один раз:
+
+```bash
+poetry add pandas
+poetry install
+```
+
+Для запросов курсов валют создайте `.env` на основе `.env.example` и укажите действующий `EXCHANGE_RATES_API_KEY`. Не добавляйте `.env` в Git: в нём хранится секретный ключ.
+
 ---
 
-## Примеры использования
+## _Запуск_
 
-Импортируйте необходимые функции из пакета src:
+Запустите консольное приложение из корневой папки проекта:
 
-### 1. Фильтрация по валюте (filter_by_currency)
 ```bash
-from src.generators import filter_by_currency
-
-print("--- Фильтрация по валюте (RUB) ---")
-rub_transactions = filter_by_currency(sample_transactions, "RUB")
-
-for tx in rub_transactions:
-    print(f"ID: {tx['id']}, Описание: {tx['description']}")
-```
-### 2. Получение описаний транзакций (transaction_descriptions)
-```bash
-from src.generators import transaction_descriptions
-
-descriptions_gen = transaction_descriptions(sample_transactions)
-all_descriptions = list(descriptions_gen)
-
-print(all_descriptions)
-```
-### 3. Генерация номеров карт (card_number_generator)
-```bash
-from src.generators import card_number_generator
-
-cards = card_number_generator(1, 3)
-
-print(next(cards))  # 0000 0000 0000 0001
-print(next(cards))  # 0000 0000 0000 0002
-print(next(cards))  # 0000 0000 0000 0003
+poetry run python -m src.main
 ```
 
+По умолчанию доступны файлы:
 
-## Тестирование
+* `data/operations.json`
+* `data/transactions.csv`
+* `data/transactions.xlsx`
 
-Проект покрыт модульными тестами с использованием библиотеки pytest.
+Если файла нет по стандартному пути, программа предложит указать свой путь.
 
-Для запуска всех тестов выполните команду:
-pytest
-Для запуска тестов с оценкой покрытия кода (Coverage) и генерацией HTML-отчета используйте:
-pytest --cov=src --cov-report=term-missing --cov-report=html
-*(После выполнения команды отчет о покрытии будет доступен в папке htmlcov/index.html)*.
+---
+
+## _Тестирование_
+
+Запустить все тесты:
+
+```bash
+poetry run pytest -q
+```
+
+Запустить тесты главной страницы, сервиса и отчёта:
+
+```bash
+poetry run pytest -q tests/test_views.py tests/test_services.py tests/test_reports.py
+```
+
+Сформировать отчёт о покрытии кода, если установлен `pytest-cov`:
+
+```bash
+poetry run pytest --cov=src --cov-report=term-missing --cov-report=html
+```
+
+---
+
+## _Структура проекта_
+
+```text
+homework/
+├── data/
+│   └── operations.json
+├── src/
+│   ├── main.py
+│   ├── operations.py
+│   ├── processing.py
+│   ├── search.py
+│   ├── services.py
+│   ├── reports.py
+│   ├── views.py
+│   ├── generators.py
+│   ├── masks.py
+│   ├── widget.py
+│   ├── external_api.py
+│   └── utils.py
+├── tests/
+├── user_settings.json
+├── .env.example
+├── pyproject.toml
+├── poetry.lock
+└── README.md
+```
