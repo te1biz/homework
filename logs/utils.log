@@ -1,16 +1,16 @@
-2026-10-16 19:58:20,820 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_transactions0/operations.json
-2026-10-16 19:58:20,820 - src.utils - INFO - Loaded 2 transactions
-2026-10-16 19:58:20,821 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_empty_file0/empty.json
-2026-10-16 19:58:20,821 - src.utils - ERROR - Failed to load transactions: Expecting value: line 1 column 1 (char 0)
-2026-10-16 19:58:20,822 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_missing_file0/missing.json
-2026-10-16 19:58:20,822 - src.utils - ERROR - Failed to load transactions: [Errno 2] No such file or directory: '/tmp/pytest-of-telbiz/pytest-19/test_load_missing_file0/missing.json'
-2026-10-16 19:58:20,823 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_not_a_list___id___1_0/invalid_structure.json
-2026-10-16 19:58:20,823 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 19:58:20,824 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_not_a_list__text__0/invalid_structure.json
-2026-10-16 19:58:20,824 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 19:58:20,825 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_not_a_list_123_0/invalid_structure.json
-2026-10-16 19:58:20,825 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 19:58:20,827 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_not_a_list_null_0/invalid_structure.json
-2026-10-16 19:58:20,827 - src.utils - WARNING - JSON file does not contain a list
-2026-10-16 19:58:20,828 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-19/test_load_invalid_json0/broken.json
-2026-10-16 19:58:20,828 - src.utils - ERROR - Failed to load transactions: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2026-10-16 20:19:32,465 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_transactions0/operations.json
+2026-10-16 20:19:32,465 - src.utils - INFO - Loaded 2 transactions
+2026-10-16 20:19:32,466 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_empty_file0/empty.json
+2026-10-16 20:19:32,466 - src.utils - ERROR - Failed to load transactions: Expecting value: line 1 column 1 (char 0)
+2026-10-16 20:19:32,467 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_missing_file0/missing.json
+2026-10-16 20:19:32,467 - src.utils - ERROR - Failed to load transactions: [Errno 2] No such file or directory: '/tmp/pytest-of-telbiz/pytest-23/test_load_missing_file0/missing.json'
+2026-10-16 20:19:32,468 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list___id___1_0/invalid_structure.json
+2026-10-16 20:19:32,468 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 20:19:32,469 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list__text__0/invalid_structure.json
+2026-10-16 20:19:32,469 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 20:19:32,470 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list_123_0/invalid_structure.json
+2026-10-16 20:19:32,470 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 20:19:32,471 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_not_a_list_null_0/invalid_structure.json
+2026-10-16 20:19:32,472 - src.utils - WARNING - JSON file does not contain a list
+2026-10-16 20:19:32,473 - src.utils - INFO - Loading transactions from /tmp/pytest-of-telbiz/pytest-23/test_load_invalid_json0/broken.json
+2026-10-16 20:19:32,473 - src.utils - ERROR - Failed to load transactions: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
