@@ -23,11 +23,12 @@ def report_saver(
 ) -> Any:
     """Декоратор сохранения результата отчёта в JSON.
 
-    Использование: ``@report_saver``, ``@report_saver()`` или
-    ``@report_saver("reports/custom.json")``.
+    Использование: @report_saver, @report_saver() или
+    @report_saver("reports/custom.json").
     """
     target = filename
     report_function: Callable[P, R] | None
+
     if callable(function):
         report_function = function
     else:
@@ -37,13 +38,56 @@ def report_saver(
                 raise TypeError("Имя файла передано дважды")
             target = function
 
-    destination = Path(target) if target is not None else PROJECT_ROOT / "reports.json"
+    # Для заданного имени путь фиксированный.
+    # Путь по умолчанию определяется при вызове отчёта.
+    destination = Path(target) if target is not None else None
 
     def decorate(func: Callable[P, R]) -> Callable[P, R]:
         @wraps(func)
         def wrapped(*args: P.args, **kwargs: P.kwargs) -> R:
             result = func(*args, **kwargs)
-            destination.parent.mkdir(parents=True, exist_ok=True)
+            report_path = destination or Path.cwd() / "reports.json"
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+
+            if isinstance(result, pd.DataFrame):
+                payload: Any = result.to_dict(orient="records")
+            elif isinstance(result, pd.Series):
+                payload = result.to_dict()
+            else:
+                payload = result
+
+            try:
+                with report_path.open("w", encoding="utf-8") as report_file:
+                    json.dump(
+                        payload,
+                        report_file,
+                        ensure_ascii=False,
+                        indent=2,
+                        default=str,
+                    )
+            except (OSError, TypeError, ValueError) as error:
+                logger.exception(
+                    "Не удалось сохранить отчёт в %s",
+                    report_path,
+                )
+                raise OSError(
+                    f"Не удалось сохранить отчёт в {report_path}"
+                ) from error
+
+            return result
+
+        return wrapped
+
+    if report_function is not None:
+        return cast(Callable[P, R], decorate(report_function))
+    return decorate
+
+    def decorate(func: Callable[P, R]) -> Callable[P, R]:
+        @wraps(func)
+        def wrapped(*args: P.args, **kwargs: P.kwargs) -> R:
+            result = func(*args, **kwargs)
+            report_path = destination or Path.cwd() / "reports.json"
+            report_path.parent.mkdir(parents=True, exist_ok=True)
             if isinstance(result, pd.DataFrame):
                 payload: Any = result.to_dict(orient="records")
             elif isinstance(result, pd.Series):
@@ -51,11 +95,11 @@ def report_saver(
             else:
                 payload = result
             try:
-                with destination.open("w", encoding="utf-8") as report_file:
+                with report_path.open("w", encoding="utf-8") as report_file:
                     json.dump(payload, report_file, ensure_ascii=False, indent=2, default=str)
             except (OSError, TypeError, ValueError) as error:
-                logger.exception("Не удалось сохранить отчёт в %s", destination)
-                raise OSError(f"Не удалось сохранить отчёт в {destination}") from error
+                logger.exception("Не удалось сохранить отчёт в %s", report_path)
+                raise OSError(f"Не удалось сохранить отчёт в {report_path}") from error
             return result
 
         return wrapped
@@ -128,3 +172,4 @@ def spending_by_category(
         len(result),
     )
     return result
+
