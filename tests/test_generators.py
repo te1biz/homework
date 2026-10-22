@@ -3,12 +3,7 @@ from typing import Any
 
 import pytest
 
-from src.generators import (
-    card_number_generator,
-    filter_by_currency,
-    transaction_descriptions,
-)
-
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 def test_filter_by_currency(
     transactions: list[dict[str, Any]],
